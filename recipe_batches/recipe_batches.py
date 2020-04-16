@@ -11,7 +11,7 @@ def recipe_batches(recipe, ingredients):
   # If the length of both dictionaries are the same
   if len(recipe) == len(ingredients):
     # Set a list to store the results
-    results = [0]
+    results = []
 
     # For each key in recipe
     for key in recipe:
@@ -27,13 +27,14 @@ def recipe_batches(recipe, ingredients):
         # append the result to the results array
         results.append(result)
 
+    # Set lowest_num to a low number
+    if results != []:
+      lowest_num = results[0]
+
     # For left_item in results
     for x in range(0, len(results)-1):
       # For right_item in results
       for y in range(x+1, len(results)-1):
-        
-        # Set lowest_num to a low number
-        lowest_num = results[x]
 
         # Compare to see which is the lowest
 
@@ -52,20 +53,10 @@ def recipe_batches(recipe, ingredients):
   # Return batches
   return batches
 
-a = { 'milk': 100, 'butter': 50, 'cheese': 10 }
-b = { 'milk': 198, 'butter': 52, 'cheese': 10 }
 
-print(f"\na:\t{a}\nb:\t{b}")
-
-print(f"\n recipe_batches funtion:\t{recipe_batches(a, b)}")
-
-
-
-"""
 if __name__ == '__main__':
   # Change the entries of these dictionaries to test 
   # your implementation with different inputs
   recipe = { 'milk': 100, 'butter': 50, 'flour': 5 }
   ingredients = { 'milk': 132, 'butter': 48, 'flour': 51 }
   print("{batches} batches can be made from the available ingredients: {ingredients}.".format(batches=recipe_batches(recipe, ingredients), ingredients=ingredients))
-  """
