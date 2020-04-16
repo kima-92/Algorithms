@@ -4,57 +4,61 @@ import math
 
 def recipe_batches(recipe, ingredients):
   # Set the batches variable to 0
+  batches = 0
   # Set a variable to store the lowest number ( lowest_num )
+  lowest_num = 0
 
-  # While the length of both dictionaries are the same
-  # While len(recipe) == len(ingredients)
-    # Set a variable to store the results
+  # If the length of both dictionaries are the same
+  if len(recipe) == len(ingredients):
+    # Set a list to store the results
+    results = [0]
 
     # For each key in recipe
-
+    for key in recipe:
       # Grab the value
+      recipe_value = recipe.get(key)
       # Grab the value with the same key from ingredients
+      ingredients_value = ingredients.get(key)
+
       # If the value of ingredients is greater than the value of recipe
+      if ingredients_value >= recipe_value:
         # ingredients // recipe
+        result = ingredients_value // recipe_value
         # append the result to the results array
+        results.append(result)
 
     # For left_item in results
+    for x in range(0, len(results)-1):
       # For right_item in results
-
+      for y in range(x+1, len(results)-1):
+        
         # Set lowest_num to a low number
+        lowest_num = results[x]
 
         # Compare to see which is the lowest
 
         # If left_item is less than right_item AND less than lowest_num
+        if results[x] < results[y] and results[x] < lowest_num:
           # set lowest_num to left_item
+          lowest_num = results[x]
         # elif right_item is less than left_item AND less than lowest_num: 
+        elif results[y] < results[x] and results[y] < lowest_num:
           # set lowest_num to right_item
+          lowest_num = results[y]
 
     # Set batches to lowest_num
+    batches = lowest_num
 
-  # return batches
-  pass 
+  # Return batches
+  return batches
 
+a = { 'milk': 100, 'butter': 50, 'cheese': 10 }
+b = { 'milk': 198, 'butter': 52, 'cheese': 10 }
 
+print(f"\na:\t{a}\nb:\t{b}")
 
+print(f"\n recipe_batches funtion:\t{recipe_batches(a, b)}")
 
-
-
-
-a = {'foo': 1, 'bar': 2}
-b = {'foo': 1, 'bar': 2}
-c = {'bar': 2, 'foo': 1}
-d = {'foo': 2, 'bar': 1}
-e = {'foo': 1, 'bar': 2, 'baz':3}
-f = {'foo': 1}
-
-print(a.items() == b.items())
-print(a.items() == c.items())
-print(a.items() == d.items())
-print(a.items() == e.items())
-print(a.items() == f.items())
-
-print(f"\na.item(): {a.items()}")
 
 
 """
