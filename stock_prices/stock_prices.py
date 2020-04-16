@@ -21,19 +21,31 @@ def find_max_profit(prices):
       # else 
         # continue
 
+  # Set a higest base
+  if results[0] > results[1]:
+    highest = results[0]
+  else:
+    highest = results[1]
+
   # Loop through the results array (x)
+  for x in range(0, len(results)-1):
     # Loop though the same array starting from the next item to the right (y)
+    for y in range(x+1, len(results)-1):
       # If current_item is greater than adjacent_item
+      if results[x] > results[y] and results[x] > highest:
         # Save in the highest variable
+        highest = results[x]
+      elif results[x] < results[y] and results[y] > highest:
+        highest = results[y]
 
   # Return the highest variable
-
-  return results
+  print(f"\nThe results array is :\t{results}")
+  return highest
 
 
 a = [32, 456, 452, 7, 456, 23, 124, 576, 34, 2]
 
-print(find_max_profit(a))
+print(f"\nThe highest profit is:\t{find_max_profit(a)}")
 
 """
 if __name__ == '__main__':
